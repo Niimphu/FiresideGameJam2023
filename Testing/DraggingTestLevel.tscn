@@ -1,0 +1,453 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Testing/testPlayer.png" type="Texture" id=1]
+[ext_resource path="res://Testing/testDraggedObject.png" type="Texture" id=2]
+[ext_resource path="res://Testing/testRopeSegment.png" type="Texture" id=3]
+[ext_resource path="res://Testing/Player.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 50, 50 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5, 25 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 25, 25 )
+
+[node name="DraggingTestLevel" type="Node2D"]
+
+[node name="Player" type="RigidBody2D" parent="."]
+position = Vector2( 508, 127 )
+mass = 10.0
+linear_damp = 5.0
+angular_damp = 5.0
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Player"]
+modulate = Color( 0.784314, 0.156863, 0.156863, 1 )
+scale = Vector2( 1, 1.30282 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
+position = Vector2( 0, 10 )
+polygon = PoolVector2Array( 0, -57, -50, 31, -50, 36, 50, 36, 50, 30 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+zoom = Vector2( 1.5, 1.5 )
+smoothing_enabled = true
+smoothing_speed = 1.0
+
+[node name="DraggedObject" type="RigidBody2D" parent="."]
+position = Vector2( 508, 472 )
+linear_damp = 3.0
+angular_damp = 3.0
+
+[node name="Sprite" type="Sprite" parent="DraggedObject"]
+modulate = Color( 0.223529, 0.247059, 0.843137, 1 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggedObject"]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Rope" type="Node2D" parent="."]
+position = Vector2( 508, 172 )
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Rope"]
+node_a = NodePath("../../Player")
+node_b = NodePath("../RopeSegment")
+disable_collision = false
+softness = 2.0
+
+[node name="RopeSegment" type="RigidBody2D" parent="Rope"]
+
+[node name="Sprite" type="Sprite" parent="Rope/RopeSegment"]
+position = Vector2( 0, 25 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rope/RopeSegment"]
+position = Vector2( 0, 25 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="Rope"]
+position = Vector2( 0, 50 )
+node_a = NodePath("../RopeSegment")
+node_b = NodePath("../RopeSegment2")
+softness = 2.0
+
+[node name="RopeSegment2" type="RigidBody2D" parent="Rope"]
+position = Vector2( 0, 50 )
+
+[node name="Sprite" type="Sprite" parent="Rope/RopeSegment2"]
+position = Vector2( 0, 25 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rope/RopeSegment2"]
+position = Vector2( 0, 25 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="Rope"]
+position = Vector2( 0, 100 )
+node_a = NodePath("../RopeSegment2")
+node_b = NodePath("../RopeSegment3")
+softness = 2.0
+
+[node name="RopeSegment3" type="RigidBody2D" parent="Rope"]
+position = Vector2( 0, 100 )
+
+[node name="Sprite" type="Sprite" parent="Rope/RopeSegment3"]
+position = Vector2( 0, 25 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rope/RopeSegment3"]
+position = Vector2( 0, 25 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PinJoint2D4" type="PinJoint2D" parent="Rope"]
+position = Vector2( 0, 150 )
+node_a = NodePath("../RopeSegment3")
+node_b = NodePath("../RopeSegment4")
+softness = 2.0
+
+[node name="RopeSegment4" type="RigidBody2D" parent="Rope"]
+position = Vector2( 0, 150 )
+
+[node name="Sprite" type="Sprite" parent="Rope/RopeSegment4"]
+position = Vector2( 0, 25 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rope/RopeSegment4"]
+position = Vector2( 0, 25 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PinJoint2D5" type="PinJoint2D" parent="Rope"]
+position = Vector2( 0, 200 )
+node_a = NodePath("../RopeSegment4")
+node_b = NodePath("../RopeSegment5")
+softness = 2.0
+
+[node name="RopeSegment5" type="RigidBody2D" parent="Rope"]
+position = Vector2( 0, 200 )
+
+[node name="Sprite" type="Sprite" parent="Rope/RopeSegment5"]
+position = Vector2( 0, 25 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rope/RopeSegment5"]
+position = Vector2( 0, 25 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PinJoint2D6" type="PinJoint2D" parent="Rope"]
+position = Vector2( 0, 250 )
+node_a = NodePath("../RopeSegment5")
+node_b = NodePath("../../DraggedObject")
+softness = 2.0
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Obstacle" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 221, 472 )
+
+[node name="Sprite" type="Sprite" parent="Obstacles/Obstacle"]
+modulate = Color( 0.137255, 0.623529, 0.282353, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Obstacle2" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 798, 106 )
+
+[node name="Sprite" type="Sprite" parent="Obstacles/Obstacle2"]
+modulate = Color( 0.137255, 0.623529, 0.282353, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle2"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Obstacle3" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 873, 472 )
+
+[node name="Sprite" type="Sprite" parent="Obstacles/Obstacle3"]
+modulate = Color( 0.137255, 0.623529, 0.282353, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle3"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Obstacle4" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 122, 106 )
+
+[node name="Sprite" type="Sprite" parent="Obstacles/Obstacle4"]
+modulate = Color( 0.137255, 0.623529, 0.282353, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle4"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Obstacle5" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 431, -141 )
+
+[node name="Sprite" type="Sprite" parent="Obstacles/Obstacle5"]
+modulate = Color( 0.137255, 0.623529, 0.282353, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle5"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Obstacle6" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( -338, 136 )
+
+[node name="Sprite" type="Sprite" parent="Obstacles/Obstacle6"]
+modulate = Color( 0.137255, 0.623529, 0.282353, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle6"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Obstacle7" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( -179, 617 )
+
+[node name="Sprite" type="Sprite" parent="Obstacles/Obstacle7"]
+modulate = Color( 0.137255, 0.623529, 0.282353, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle7"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Obstacle8" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 355, 864 )
+
+[node name="Sprite" type="Sprite" parent="Obstacles/Obstacle8"]
+modulate = Color( 0.137255, 0.623529, 0.282353, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle8"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Obstacle9" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 987, 912 )
+
+[node name="Sprite" type="Sprite" parent="Obstacles/Obstacle9"]
+modulate = Color( 0.137255, 0.623529, 0.282353, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle9"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Obstacle10" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 1362, 597 )
+
+[node name="Sprite" type="Sprite" parent="Obstacles/Obstacle10"]
+modulate = Color( 0.137255, 0.623529, 0.282353, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle10"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Obstacle11" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 1496, 75 )
+
+[node name="Sprite" type="Sprite" parent="Obstacles/Obstacle11"]
+modulate = Color( 0.137255, 0.623529, 0.282353, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle11"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Obstacle12" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 1272, -255 )
+
+[node name="Sprite" type="Sprite" parent="Obstacles/Obstacle12"]
+modulate = Color( 0.137255, 0.623529, 0.282353, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle12"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Obstacle13" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 836, -411 )
+
+[node name="Sprite" type="Sprite" parent="Obstacles/Obstacle13"]
+modulate = Color( 0.137255, 0.623529, 0.282353, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle13"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Obstacle14" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( -71, -252 )
+
+[node name="Sprite" type="Sprite" parent="Obstacles/Obstacle14"]
+modulate = Color( 0.137255, 0.623529, 0.282353, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle14"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Obstacle15" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 291, -543 )
+
+[node name="Sprite" type="Sprite" parent="Obstacles/Obstacle15"]
+modulate = Color( 0.137255, 0.623529, 0.282353, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle15"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PlayerUI" type="CanvasLayer" parent="."]
+
+[node name="ControlsLabel" type="Label" parent="PlayerUI"]
+margin_left = 13.0
+margin_top = 555.0
+margin_right = 254.0
+margin_bottom = 586.0
+text = "Rotate Player - Left / Right Arrow Keys
+Move Forward - Up Arrow Key"
