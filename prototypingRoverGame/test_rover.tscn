@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://5j51bvj1o0ar"]
+
+[ext_resource type="Script" path="res://prototypingRoverGame/test_rover.gd" id="1_2fmxt"]
+[ext_resource type="Texture2D" uid="uid://722n8eybsndk" path="res://prototypingRoverGame/TestRoverSprite.png" id="2_pww5r"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_2fmxt")
+type = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pww5r")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmyc41apj2h4c"]
+
+[ext_resource type="TileSet" uid="uid://vygtjcvkkhob" path="res://prototypingRoverGame/grid_tileset.tres" id="1_ftsmt"]
+[ext_resource type="Script" path="res://prototypingRoverGame/test_grid.gd" id="2_o74bi"]
+
+[node name="Grid" type="TileMap"]
+tile_set = ExtResource("1_ftsmt")
+format = 2
+layer_0/tile_data = PackedInt32Array(196615, 0, 0, 262151, 0, 0, 327687, 0, 0, 393223, 0, 0, 458759, 0, 0, 524295, 0, 0, 327688, 0, 0, 393224, 0, 0, 458760, 0, 0, 524296, 0, 0, 524297, 0, 0, 458761, 0, 0, 393225, 0, 0)
+script = ExtResource("2_o74bi")
