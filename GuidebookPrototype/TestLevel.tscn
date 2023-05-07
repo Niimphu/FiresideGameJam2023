@@ -30,6 +30,7 @@ hframes = 2
 position = Vector2( 512, 300 )
 texture = ExtResource( 4 )
 hframes = 8
+frame = 1
 
 [node name="Stamen" type="Sprite" parent="FlowerLevelIdentifier"]
 position = Vector2( 512, 300 )

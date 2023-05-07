@@ -4,7 +4,7 @@ onready var button_control = load("res://GuidebookPrototype/ButtonControl.tscn")
 onready var sprites = get_children()
 onready var reload_delay = get_parent().get_node("ReloadTimer")
 
-var is_dangerous: bool = false
+var is_dangerous: bool
 var buttons
 
 func _ready():
