@@ -16,7 +16,7 @@ var petal_colour
 var petal_roundness
 var petal_amount
 
-func _process(delta):
+func _process(_delta):
 	initialise_features()
 	is_dangerous = check_danger()
 
