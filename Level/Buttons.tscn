@@ -31,7 +31,7 @@ theme = ExtResource( 4 )
 icon = ExtResource( 3 )
 
 [node name="ResultDelay" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.3
 one_shot = true
 
 [connection signal="button_down" from="Buttons/SafeButton" to="." method="_on_SafeButton_button_down"]

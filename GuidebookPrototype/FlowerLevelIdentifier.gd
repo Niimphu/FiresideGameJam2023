@@ -1,4 +1,4 @@
-extends "res://GuidebookPrototype/Identifier.gd"
+extends Node
 
 onready var stamen = $Stamen
 onready var flower = $Flower
@@ -18,7 +18,6 @@ var petal_amount
 
 func _process(_delta):
 	initialise_features()
-	is_dangerous = check_danger()
 
 func check_danger() -> bool:
 		if petal_colour == colour.ORANGE:
