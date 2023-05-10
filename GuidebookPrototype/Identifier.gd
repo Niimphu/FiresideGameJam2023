@@ -1,6 +1,6 @@
 extends Node
 
-onready var button_control = load("res://GuidebookPrototype/ButtonControl.tscn")
+onready var button_control = load("res://Level/Buttons.tscn")
 onready var sprites = get_children()
 onready var reload_delay = get_parent().get_node("ReloadTimer")
 

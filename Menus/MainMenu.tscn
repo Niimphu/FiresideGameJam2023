@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Menus/Sprites/Help.png" type="Texture" id=1]
 [ext_resource path="res://Menus/Sprites/Settings.png" type="Texture" id=2]
@@ -7,13 +7,14 @@
 [ext_resource path="res://Menus/Sprites/Logo.png" type="Texture" id=5]
 [ext_resource path="res://Menus/ButtonTheme.tres" type="Theme" id=6]
 [ext_resource path="res://Menus/Sprites/Moon.PNG" type="Texture" id=7]
-[ext_resource path="res://Animation scripts/spin.gd" type="Script" id=8]
+[ext_resource path="res://Animation scripts/spin_control.gd" type="Script" id=8]
 [ext_resource path="res://Menus/Sprites/Pepper Mill.png" type="Texture" id=9]
 [ext_resource path="res://Menus/Sprites/Potted Flower.png" type="Texture" id=10]
 [ext_resource path="res://Menus/Sprites/Wine Glass.png" type="Texture" id=11]
 [ext_resource path="res://Menus/Sprites/Cutlery.png" type="Texture" id=12]
 [ext_resource path="res://Menus/SettingsMenu.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Menus/MainMenu.gd" type="Script" id=14]
+[ext_resource path="res://Menus/PlayMenu.tscn" type="PackedScene" id=15]
 
 [node name="MainMenu" type="Control"]
 theme = ExtResource( 6 )
@@ -122,6 +123,8 @@ margin_bottom = 496.0
 
 [node name="SettingsMenu" parent="." instance=ExtResource( 13 )]
 visible = false
+
+[node name="PlayMenu" parent="." instance=ExtResource( 15 )]
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
