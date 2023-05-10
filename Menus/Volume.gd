@@ -8,7 +8,7 @@ func _ready():
 func _on_MusicSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(music_bus, value)
 
-	if value < -30:
+	if value <= -30:
 		AudioServer.set_bus_mute(music_bus, true)
 	else:
 		AudioServer.set_bus_mute(music_bus, false)
