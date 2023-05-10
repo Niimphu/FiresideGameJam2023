@@ -13,9 +13,9 @@ func _ready():
 		child.frame = randi() % child.hframes
 	buttons = button_control.instance()
 	buttons.set_name("ButtonControl")
-	add_child(buttons)
 	buttons.connect("safe", self, "_on_safe_pressed")
 	buttons.connect("danger", self, "_on_danger_pressed")
+	get_node("/root/Level/HUD").add_child(buttons)
 	reload_delay.connect("timeout", self, "_on_ReloadDelay_timeout")
 
 func _on_safe_pressed():
