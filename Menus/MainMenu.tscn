@@ -1,0 +1,180 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Menus/Sprites/Help.png" type="Texture" id=1]
+[ext_resource path="res://Menus/Sprites/Settings.png" type="Texture" id=2]
+[ext_resource path="res://Menus/Sprites/Play.png" type="Texture" id=3]
+[ext_resource path="res://Menus/Sprites/Exit.png" type="Texture" id=4]
+[ext_resource path="res://Menus/Sprites/Logo.png" type="Texture" id=5]
+[ext_resource path="res://Menus/ButtonTheme.tres" type="Theme" id=6]
+[ext_resource path="res://Menus/Sprites/Moon.PNG" type="Texture" id=7]
+[ext_resource path="res://Animation scripts/spin_control.gd" type="Script" id=8]
+[ext_resource path="res://Menus/Sprites/Pepper Mill.png" type="Texture" id=9]
+[ext_resource path="res://Menus/Sprites/Potted Flower.png" type="Texture" id=10]
+[ext_resource path="res://Menus/Sprites/Wine Glass.png" type="Texture" id=11]
+[ext_resource path="res://Menus/Sprites/Cutlery.png" type="Texture" id=12]
+[ext_resource path="res://Menus/SettingsMenu.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Menus/MainMenu.gd" type="Script" id=14]
+[ext_resource path="res://Menus/PlayMenu.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Menus/item_floating_shader.tres" type="Shader" id=16]
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 16 )
+shader_param/movement_speed_multiplier = 1.0
+shader_param/movement_distance_multiplier = 25.0
+shader_param/movement_y_position_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 16 )
+shader_param/movement_speed_multiplier = 0.7
+shader_param/movement_distance_multiplier = 35.0
+shader_param/movement_y_position_offset = 2.0
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 16 )
+shader_param/movement_speed_multiplier = 1.1
+shader_param/movement_distance_multiplier = 30.0
+shader_param/movement_y_position_offset = 3.0
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 16 )
+shader_param/movement_speed_multiplier = 0.8
+shader_param/movement_distance_multiplier = 20.0
+shader_param/movement_y_position_offset = 11.0
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 16 )
+shader_param/movement_speed_multiplier = 1.0
+shader_param/movement_distance_multiplier = 4.0
+shader_param/movement_y_position_offset = 0.0
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="MainMenu" type="Control"]
+theme = ExtResource( 6 )
+script = ExtResource( 14 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1617.0
+margin_bottom = 932.0
+color = Color( 0.360784, 0.372549, 0.592157, 1 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Wine" type="TextureRect" parent="Control"]
+material = SubResource( 3 )
+margin_left = 622.0
+margin_top = 166.0
+margin_right = 720.0
+margin_bottom = 293.0
+texture = ExtResource( 11 )
+
+[node name="Cutlery" type="TextureRect" parent="Control"]
+material = SubResource( 4 )
+margin_left = 895.0
+margin_top = 312.0
+margin_right = 986.0
+margin_bottom = 424.0
+texture = ExtResource( 12 )
+
+[node name="Salt" type="TextureRect" parent="Control"]
+material = SubResource( 5 )
+margin_left = 1071.0
+margin_top = 451.0
+margin_right = 1145.0
+margin_bottom = 573.0
+texture = ExtResource( 9 )
+
+[node name="Flower" type="TextureRect" parent="Control"]
+material = SubResource( 6 )
+margin_left = 727.0
+margin_top = 415.0
+margin_right = 820.0
+margin_bottom = 596.0
+texture = ExtResource( 10 )
+
+[node name="Moon" type="TextureRect" parent="."]
+margin_left = 885.0
+margin_top = -185.0
+margin_right = 1385.0
+margin_bottom = 246.0
+rect_pivot_offset = Vector2( 250, 215 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 8 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 120.0
+margin_top = 100.0
+margin_right = 467.0
+margin_bottom = 581.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 347.0
+margin_bottom = 496.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_right = 343.0
+margin_bottom = 496.0
+
+[node name="Logo" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+material = SubResource( 7 )
+margin_right = 343.0
+margin_bottom = 193.0
+texture = ExtResource( 5 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 197.0
+margin_right = 343.0
+margin_bottom = 293.0
+
+[node name="Play" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 227.0
+margin_bottom = 96.0
+icon = ExtResource( 3 )
+
+[node name="Help" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 231.0
+margin_right = 312.0
+margin_bottom = 96.0
+icon = ExtResource( 1 )
+
+[node name="Settings" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 297.0
+margin_right = 343.0
+margin_bottom = 407.0
+icon = ExtResource( 2 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 411.0
+margin_right = 343.0
+margin_bottom = 496.0
+
+[node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 182.0
+margin_bottom = 85.0
+theme = ExtResource( 6 )
+icon = ExtResource( 4 )
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 186.0
+margin_right = 190.0
+margin_bottom = 85.0
+custom_styles/separator = SubResource( 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 347.0
+margin_right = 347.0
+margin_bottom = 496.0
+
+[node name="SettingsMenu" parent="." instance=ExtResource( 13 )]
+visible = false
+
+[node name="PlayMenu" parent="." instance=ExtResource( 15 )]
+visible = false
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Exit" to="." method="_on_Exit_pressed"]

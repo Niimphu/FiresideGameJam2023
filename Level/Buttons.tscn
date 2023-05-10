@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://GuidebookPrototype/ButtonControl.gd" type="Script" id=1]
-[ext_resource path="res://Level/Sprites/Tick.PNG" type="Texture" id=2]
-[ext_resource path="res://Level/Sprites/Cross.PNG" type="Texture" id=3]
+[ext_resource path="res://Level/Sprites/NewTick.PNG" type="Texture" id=2]
+[ext_resource path="res://Level/Sprites/NewCross.PNG" type="Texture" id=3]
 [ext_resource path="res://Level/Buttons.tres" type="Theme" id=4]
 
 [node name="ButtonControl" type="Control"]
@@ -15,18 +15,18 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="SafeButton" type="Button" parent="Buttons"]
-margin_left = 1034.0
-margin_top = 603.0
-margin_right = 1123.0
-margin_bottom = 683.0
+margin_left = 1033.0
+margin_top = 607.0
+margin_right = 1122.0
+margin_bottom = 687.0
 theme = ExtResource( 4 )
 icon = ExtResource( 2 )
 
 [node name="DangerButton" type="Button" parent="Buttons"]
-margin_left = 1160.0
-margin_top = 601.0
-margin_right = 1255.0
-margin_bottom = 689.0
+margin_left = 1159.0
+margin_top = 605.0
+margin_right = 1254.0
+margin_bottom = 693.0
 theme = ExtResource( 4 )
 icon = ExtResource( 3 )
 

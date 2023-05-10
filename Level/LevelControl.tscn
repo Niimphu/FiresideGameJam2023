@@ -1,22 +1,66 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Animation scripts/spin_sprite.gd" type="Script" id=1]
 [ext_resource path="res://Level/LevelControl.gd" type="Script" id=2]
 [ext_resource path="res://Level/Sprites/Base.PNG" type="Texture" id=3]
-[ext_resource path="res://Level/Sprites/Sound5.PNG" type="Texture" id=4]
+[ext_resource path="res://Level/Sprites/NewSound5.PNG" type="Texture" id=4]
 [ext_resource path="res://Level/Sprites/Spinny ring.PNG" type="Texture" id=5]
 [ext_resource path="res://Level/Sprites/Spinny ring 2.PNG" type="Texture" id=6]
-[ext_resource path="res://Level/Sprites/Sound3.PNG" type="Texture" id=7]
-[ext_resource path="res://Level/Sprites/Sound1.PNG" type="Texture" id=8]
-[ext_resource path="res://Level/Sprites/Sound4.PNG" type="Texture" id=9]
-[ext_resource path="res://Level/Sprites/Sound2.PNG" type="Texture" id=10]
+[ext_resource path="res://Level/Sprites/NewSound1.PNG" type="Texture" id=7]
+[ext_resource path="res://Level/Sprites/NewSound2.PNG" type="Texture" id=8]
+[ext_resource path="res://Level/Sprites/NewSound3.PNG" type="Texture" id=9]
+[ext_resource path="res://Level/Sprites/NewSound4.PNG" type="Texture" id=10]
 [ext_resource path="res://GuidebookPrototype/TestLevel.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Level/Buttons.tscn" type="PackedScene" id=12]
-[ext_resource path="res://UI/Fader.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Menus/Fader.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Level/Sprites/NewHealth1.PNG" type="Texture" id=14]
+[ext_resource path="res://Level/Sprites/NewHealth2.PNG" type="Texture" id=15]
+[ext_resource path="res://Level/Sprites/NewHealth3.PNG" type="Texture" id=16]
+[ext_resource path="res://Level/Sprites/NewHealth4.PNG" type="Texture" id=17]
+[ext_resource path="res://Level/Sprites/NewHealth5.PNG" type="Texture" id=18]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "flash"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false, true ]
+}
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -69,8 +113,16 @@ margin_right = 1280.0
 margin_bottom = 720.0
 texture = ExtResource( 3 )
 
+[node name="LivesIndicator" type="AnimatedSprite" parent="HUD"]
+position = Vector2( 1147, 281 )
+frames = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/LivesIndicator"]
+anims/RESET = SubResource( 5 )
+anims/flash = SubResource( 6 )
+
 [node name="SoundVisualiser" type="AnimatedSprite" parent="HUD"]
-position = Vector2( 1162, 479 )
+position = Vector2( 1149, 476 )
 frames = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/SoundVisualiser"]
@@ -96,4 +148,7 @@ rotate_modifier = -2.5
 [node name="ButtonControl" parent="HUD" instance=ExtResource( 12 )]
 
 [node name="Fader" parent="." instance=ExtResource( 13 )]
-color = Color( 0, 0, 0, 1 )
+visible = false
+__meta__ = {
+"_edit_lock_": true
+}
