@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Menus/Sprites/Help.png" type="Texture" id=1]
 [ext_resource path="res://Menus/Sprites/Settings.png" type="Texture" id=2]
@@ -15,6 +15,31 @@
 [ext_resource path="res://Menus/SettingsMenu.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Menus/MainMenu.gd" type="Script" id=14]
 [ext_resource path="res://Menus/PlayMenu.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Menus/item_floating_shader.tres" type="Shader" id=16]
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 16 )
+shader_param/movement_speed_multiplier = 1.0
+shader_param/movement_distance_multiplier = 50.0
+shader_param/movement_y_position_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 16 )
+shader_param/movement_speed_multiplier = 0.7
+shader_param/movement_distance_multiplier = 50.0
+shader_param/movement_y_position_offset = 2.0
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 16 )
+shader_param/movement_speed_multiplier = 1.1
+shader_param/movement_distance_multiplier = 70.0
+shader_param/movement_y_position_offset = 3.0
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 16 )
+shader_param/movement_speed_multiplier = 0.8
+shader_param/movement_distance_multiplier = 60.0
+shader_param/movement_y_position_offset = 11.0
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -32,31 +57,35 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="Wine" type="TextureRect" parent="Control"]
+material = SubResource( 3 )
 margin_left = 622.0
 margin_top = 166.0
 margin_right = 720.0
-margin_bottom = 662.0
+margin_bottom = 293.0
 texture = ExtResource( 11 )
 
 [node name="Cutlery" type="TextureRect" parent="Control"]
-margin_left = 877.0
-margin_top = 248.0
-margin_right = 968.0
-margin_bottom = 360.0
+material = SubResource( 4 )
+margin_left = 895.0
+margin_top = 312.0
+margin_right = 986.0
+margin_bottom = 424.0
 texture = ExtResource( 12 )
 
 [node name="Salt" type="TextureRect" parent="Control"]
-margin_left = 1049.0
-margin_top = 371.0
-margin_right = 1396.0
-margin_bottom = 867.0
+material = SubResource( 5 )
+margin_left = 1071.0
+margin_top = 451.0
+margin_right = 1145.0
+margin_bottom = 573.0
 texture = ExtResource( 9 )
 
 [node name="Flower" type="TextureRect" parent="Control"]
-margin_left = 763.0
-margin_top = 445.0
-margin_right = 856.0
-margin_bottom = 626.0
+material = SubResource( 6 )
+margin_left = 727.0
+margin_top = 475.0
+margin_right = 820.0
+margin_bottom = 656.0
 texture = ExtResource( 10 )
 
 [node name="Moon" type="TextureRect" parent="."]
