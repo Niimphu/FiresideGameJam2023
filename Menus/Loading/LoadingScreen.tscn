@@ -35,16 +35,16 @@ shader_param/movement_x_position_offset = 5.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="TextureRect" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="CloudScroll" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 0, 1440 )
 script = ExtResource( 5 )
 
-[node name="BG" type="ColorRect" parent="ParallaxBackground/TextureRect"]
+[node name="BG" type="ColorRect" parent="ParallaxBackground/CloudScroll"]
 margin_right = 1293.0
 margin_bottom = 1447.0
 color = Color( 0.466667, 0.607843, 0.8, 1 )
 
-[node name="Clouds" type="TextureRect" parent="ParallaxBackground/TextureRect"]
+[node name="Clouds" type="TextureRect" parent="ParallaxBackground/CloudScroll"]
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 7 )

@@ -1,7 +1,7 @@
 extends Control
 
 onready var buttons = $Buttons.get_children()
-onready var delay_timer = $ResultDelay
+onready var button_cooldown = $ButtonCooldown
 
 var danger_selected: bool
 
@@ -9,24 +9,24 @@ signal safe
 signal danger
 
 func _ready():
-	for button in buttons:
-		button.disabled = false
+	enable_buttons()
 
 func button_pressed():
 	for button in buttons:
 		button.disabled = true
-	delay_timer.start()
+	button_cooldown.start()
 
 func _on_SafeButton_button_down():
-	danger_selected = false
+	emit_signal("safe")
 	button_pressed()
 
 func _on_DangerButton_button_down():
-	danger_selected = true
+	emit_signal("danger")
 	button_pressed()
 
-func _on_ResultDelay_timeout():
-	if danger_selected == true:
-		emit_signal("danger")
-	else:
-		emit_signal("safe")
+func _on_ButtonCooldown_timeout():
+	enable_buttons()
+
+func enable_buttons():
+	for button in buttons:
+		button.disabled = false

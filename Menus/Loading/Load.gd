@@ -7,6 +7,16 @@ func change_scene(current_scene, new_scene):
 	
 	get_tree().get_root().call_deferred("add_child", load_scene_instance)
 	
+	#loading screen ship goes downwards only when loading into game level
+	if new_scene == "res://Level/LevelControl.tscn":
+		load_scene_instance.get_node("Ship").flip_v = false
+		load_scene_instance.get_node("ParallaxBackground/CloudScroll").CLOUD_SPEED = -40
+	else:
+		load_scene_instance.get_node("Ship").flip_v = true
+		load_scene_instance.get_node("ParallaxBackground/CloudScroll").CLOUD_SPEED = 40
+	
+	
+	#load game level in the background
 	var loader = ResourceLoader.load_interactive(new_scene)
 	
 	if !loader:

@@ -30,10 +30,9 @@ margin_bottom = 693.0
 theme = ExtResource( 4 )
 icon = ExtResource( 3 )
 
-[node name="ResultDelay" type="Timer" parent="."]
-wait_time = 0.3
+[node name="ButtonCooldown" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="button_down" from="Buttons/SafeButton" to="." method="_on_SafeButton_button_down"]
 [connection signal="button_down" from="Buttons/DangerButton" to="." method="_on_DangerButton_button_down"]
-[connection signal="timeout" from="ResultDelay" to="." method="_on_ResultDelay_timeout"]
+[connection signal="timeout" from="ButtonCooldown" to="." method="_on_ButtonCooldown_timeout"]

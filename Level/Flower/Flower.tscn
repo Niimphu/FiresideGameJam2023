@@ -1,0 +1,113 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Level/Flower/Sprites/Stamen4.PNG" type="Texture" id=1]
+[ext_resource path="res://Level/Flower/Sprites/Stamen5.PNG" type="Texture" id=2]
+[ext_resource path="res://Level/Flower/Sprites/PollenNone.PNG" type="Texture" id=3]
+[ext_resource path="res://Level/Flower/Sprites/BG.PNG" type="Texture" id=5]
+[ext_resource path="res://Level/Flower/Sprites/Petals2.PNG" type="Texture" id=6]
+[ext_resource path="res://Level/Flower/Sprites/Petals4.PNG" type="Texture" id=7]
+[ext_resource path="res://Level/Flower/Sprites/Center.PNG" type="Texture" id=8]
+[ext_resource path="res://Level/Flower/Sprites/Stamen1.PNG" type="Texture" id=9]
+[ext_resource path="res://Level/Flower/Sprites/Stamen3.PNG" type="Texture" id=10]
+[ext_resource path="res://Level/Flower/Sprites/Petals3.PNG" type="Texture" id=11]
+[ext_resource path="res://Level/Flower/Sprites/Petals1.PNG" type="Texture" id=12]
+[ext_resource path="res://Level/Flower/Sprites/Stamen2.PNG" type="Texture" id=13]
+[ext_resource path="res://Level/Flower/Sprites/StemThorny.PNG" type="Texture" id=14]
+[ext_resource path="res://Level/Flower/Sprites/Stem.PNG" type="Texture" id=15]
+[ext_resource path="res://Level/Flower/FlowerIdentifier.gd" type="Script" id=16]
+[ext_resource path="res://Level/Flower/Sprites/Grass.PNG" type="Texture" id=17]
+[ext_resource path="res://Level/Flower/Sprites/PollenParticle.png" type="Texture" id=18]
+[ext_resource path="res://Animation scripts/Sway.gdshader" type="Shader" id=19]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Gradient" id=7]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 19 )
+
+[node name="Flower" type="Node2D"]
+
+[node name="Panel" type="Sprite" parent="."]
+position = Vector2( 640, 360 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Identifiers" type="Node2D" parent="."]
+script = ExtResource( 16 )
+
+[node name="Stem" type="AnimatedSprite" parent="Identifiers"]
+position = Vector2( 637, 362 )
+frames = SubResource( 1 )
+
+[node name="Petals" type="AnimatedSprite" parent="Identifiers"]
+position = Vector2( 640, 360 )
+frames = SubResource( 2 )
+
+[node name="Centre" type="Sprite" parent="Identifiers"]
+position = Vector2( 641, 361 )
+texture = ExtResource( 8 )
+
+[node name="Stamen" type="AnimatedSprite" parent="Identifiers"]
+position = Vector2( 640, 360 )
+frames = SubResource( 3 )
+
+[node name="Pollen" type="AnimatedSprite" parent="Identifiers"]
+position = Vector2( 632, 328 )
+frames = SubResource( 4 )
+
+[node name="Particles2D" type="CPUParticles2D" parent="Identifiers/Pollen"]
+position = Vector2( -248, -8 )
+amount = 5
+lifetime = 2.0
+texture = ExtResource( 18 )
+emission_shape = 1
+emission_sphere_radius = 38.57
+direction = Vector2( 0, -1 )
+spread = 55.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 150.0
+scale_amount = 0.05
+scale_amount_random = 0.06
+color_ramp = SubResource( 7 )
+
+[node name="ReloadTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Grass" type="Sprite" parent="."]
+material = SubResource( 6 )
+position = Vector2( 640, 360 )
+texture = ExtResource( 17 )

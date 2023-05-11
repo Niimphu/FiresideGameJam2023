@@ -1,8 +1,8 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Animation scripts/spin_sprite.gd" type="Script" id=1]
 [ext_resource path="res://Level/LevelControl.gd" type="Script" id=2]
-[ext_resource path="res://Level/Sprites/Base.PNG" type="Texture" id=3]
+[ext_resource path="res://Level/Sprites/Panel.PNG" type="Texture" id=3]
 [ext_resource path="res://Level/Sprites/NewSound5.PNG" type="Texture" id=4]
 [ext_resource path="res://Level/Sprites/Spinny ring.PNG" type="Texture" id=5]
 [ext_resource path="res://Level/Sprites/Spinny ring 2.PNG" type="Texture" id=6]
@@ -10,7 +10,6 @@
 [ext_resource path="res://Level/Sprites/NewSound2.PNG" type="Texture" id=8]
 [ext_resource path="res://Level/Sprites/NewSound3.PNG" type="Texture" id=9]
 [ext_resource path="res://Level/Sprites/NewSound4.PNG" type="Texture" id=10]
-[ext_resource path="res://GuidebookPrototype/TestLevel.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Level/Buttons.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Menus/Fader.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Level/Sprites/NewHealth1.PNG" type="Texture" id=14]
@@ -101,14 +100,11 @@ tracks/0/keys = {
 [node name="LevelControl" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Levels" type="Node2D" parent="."]
-
-[node name="TestLevel" parent="Levels" instance=ExtResource( 11 )]
+[node name="Level" type="Node2D" parent="."]
 
 [node name="HUD" type="Node2D" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="HUD"]
-margin_left = 1006.0
 margin_right = 1280.0
 margin_bottom = 720.0
 texture = ExtResource( 3 )
@@ -147,8 +143,15 @@ rotate_modifier = -2.5
 
 [node name="ButtonControl" parent="HUD" instance=ExtResource( 12 )]
 
+[node name="LevelChangeDelay" type="Timer" parent="."]
+one_shot = true
+
 [node name="Fader" parent="." instance=ExtResource( 13 )]
 visible = false
 __meta__ = {
 "_edit_lock_": true
 }
+
+[connection signal="danger" from="HUD/ButtonControl" to="." method="_on_ButtonControl_danger"]
+[connection signal="safe" from="HUD/ButtonControl" to="." method="_on_ButtonControl_safe"]
+[connection signal="timeout" from="LevelChangeDelay" to="." method="_on_LevelChangeDelay_timeout"]

@@ -38,5 +38,5 @@ hframes = 3
 frame = 2
 
 [node name="ReloadTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
