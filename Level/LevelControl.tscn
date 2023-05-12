@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Animation scripts/spin_sprite.gd" type="Script" id=1]
 [ext_resource path="res://Level/LevelControl.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Level/Sprites/NewSound2.PNG" type="Texture" id=8]
 [ext_resource path="res://Level/Sprites/NewSound3.PNG" type="Texture" id=9]
 [ext_resource path="res://Level/Sprites/NewSound4.PNG" type="Texture" id=10]
+[ext_resource path="res://Menus/Pause/PauseMenu.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Level/Buttons.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Menus/Fader.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Level/Sprites/NewHealth1.PNG" type="Texture" id=14]
@@ -151,6 +152,8 @@ visible = false
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="PauseMenu" parent="." instance=ExtResource( 11 )]
 
 [connection signal="danger" from="HUD/ButtonControl" to="." method="_on_ButtonControl_danger"]
 [connection signal="safe" from="HUD/ButtonControl" to="." method="_on_ButtonControl_safe"]
