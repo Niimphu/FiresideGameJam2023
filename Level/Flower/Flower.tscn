@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Level/Flower/Sprites/Stamen4.PNG" type="Texture" id=1]
 [ext_resource path="res://Level/Flower/Sprites/Stamen5.PNG" type="Texture" id=2]
@@ -26,6 +26,55 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="Shader" id=8]
+code = "shader_type canvas_item;
+
+uniform vec4 white : hint_color = vec4(1.0);
+uniform vec4 red : hint_color = vec4(1.0, 0.0, 0.0, 1.0);
+uniform vec4 magenta : hint_color = vec4(1.0, 0.0, 1.0, 1.0);
+uniform vec4 royal_blue : hint_color = vec4(0.255, 0.412, 0.882, 1.0);
+
+// The chosen color is selected using this uniform int.
+// Set the value to change the color.
+// 0 - White
+// 1 - Red
+// 2 - Magenta
+// 3 - Royal Blue
+uniform int colour_index : hint_range(0, 3, 1) = 0;
+
+void fragment()
+{
+	COLOR = texture(TEXTURE, UV);
+	
+	if(COLOR.a != 0.0)
+	{
+		if(colour_index == 0)
+		{
+			COLOR = vec4(white.rgb, COLOR.a);
+		}
+		else if(colour_index == 1)
+		{
+			COLOR = vec4(red.rgb, COLOR.a);
+		}
+		else if(colour_index == 2)
+		{
+			COLOR = vec4(magenta.rgb, COLOR.a);
+		}
+		else
+		{
+			COLOR = vec4(royal_blue.rgb, COLOR.a);
+		}
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 8 )
+shader_param/white = Color( 1, 1, 1, 1 )
+shader_param/red = Color( 1, 0, 0, 1 )
+shader_param/magenta = Color( 1, 0, 1, 1 )
+shader_param/royal_blue = Color( 0.255, 0.412, 0.882, 1 )
+shader_param/colour_index = 0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -74,6 +123,7 @@ position = Vector2( 637, 362 )
 frames = SubResource( 1 )
 
 [node name="Petals" type="AnimatedSprite" parent="Identifiers"]
+material = SubResource( 9 )
 position = Vector2( 640, 360 )
 frames = SubResource( 2 )
 
