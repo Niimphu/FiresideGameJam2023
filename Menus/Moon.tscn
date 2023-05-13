@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Animation scripts/spin_control.gd" type="Script" id=1]
+[ext_resource path="res://Menus/Sprites/Moon.PNG" type="Texture" id=2]
+
+[node name="Moon" type="TextureRect"]
+margin_left = 885.0
+margin_top = -185.0
+margin_right = 1385.0
+margin_bottom = 246.0
+rect_pivot_offset = Vector2( 250, 215 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 1 )

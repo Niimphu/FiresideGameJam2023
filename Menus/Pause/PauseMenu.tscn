@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Menus/Pause/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://Menus/Pause/Textures/MainMenu.PNG" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Menus/Pause/Textures/Settings.PNG" type="Texture" id=4]
 [ext_resource path="res://Menus/ButtonTheme.tres" type="Theme" id=5]
 [ext_resource path="res://Menus/SettingsMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Menus/Moon.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Menus/Pause/Textures/Paused.png" type="Texture" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -22,60 +24,66 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -191.5
-margin_top = -223.0
-margin_right = 191.5
-margin_bottom = 223.0
+margin_left = -515.0
+margin_top = -267.0
+margin_right = -119.0
+margin_bottom = 242.0
 theme = ExtResource( 5 )
 
-[node name="Label_Paused" type="Label" parent="VBoxContainer"]
-margin_right = 383.0
-margin_bottom = 14.0
-text = "PAUSED"
-align = 1
+[node name="Label_Paused" type="TextureRect" parent="VBoxContainer"]
+margin_right = 396.0
+margin_bottom = 100.0
+texture = ExtResource( 8 )
 
 [node name="HSeparator_50px" type="HSeparator" parent="VBoxContainer"]
-margin_top = 18.0
-margin_right = 383.0
-margin_bottom = 68.0
-custom_constants/separation = 50
+margin_top = 104.0
+margin_right = 396.0
+margin_bottom = 105.0
+custom_constants/separation = 1
 custom_styles/separator = SubResource( 1 )
 
-[node name="Button_Menu" type="Button" parent="VBoxContainer"]
-margin_top = 72.0
-margin_right = 383.0
-margin_bottom = 172.0
-icon = ExtResource( 2 )
+[node name="Button_Resume" type="Button" parent="VBoxContainer"]
+margin_top = 109.0
+margin_right = 396.0
+margin_bottom = 209.0
+icon = ExtResource( 3 )
 
 [node name="HSeparator_20px_1" type="HSeparator" parent="VBoxContainer"]
-margin_top = 176.0
-margin_right = 383.0
-margin_bottom = 196.0
+margin_top = 213.0
+margin_right = 396.0
+margin_bottom = 233.0
 custom_constants/separation = 20
 custom_styles/separator = SubResource( 1 )
 
 [node name="Button_Settings" type="Button" parent="VBoxContainer"]
-margin_top = 200.0
-margin_right = 383.0
-margin_bottom = 300.0
+margin_top = 237.0
+margin_right = 396.0
+margin_bottom = 337.0
 icon = ExtResource( 4 )
 
 [node name="HSeparator_20px_2" type="HSeparator" parent="VBoxContainer"]
-margin_top = 304.0
-margin_right = 383.0
-margin_bottom = 324.0
+margin_top = 341.0
+margin_right = 396.0
+margin_bottom = 361.0
 custom_constants/separation = 20
 custom_styles/separator = SubResource( 1 )
 
-[node name="Button_Resume" type="Button" parent="VBoxContainer"]
-margin_top = 328.0
-margin_right = 383.0
-margin_bottom = 428.0
-icon = ExtResource( 3 )
+[node name="Button_Menu" type="Button" parent="VBoxContainer"]
+margin_top = 365.0
+margin_right = 396.0
+margin_bottom = 465.0
+icon = ExtResource( 2 )
 
 [node name="SettingsMenu" parent="." instance=ExtResource( 6 )]
 visible = false
 
-[connection signal="pressed" from="VBoxContainer/Button_Menu" to="." method="_on_Button_Menu_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button_Settings" to="." method="_on_Button_Settings_pressed"]
+[node name="Moon" parent="." instance=ExtResource( 7 )]
+margin_left = 690.0
+margin_top = 333.0
+margin_right = 1370.0
+margin_bottom = 925.0
+rect_pivot_offset = Vector2( 340, 296.366 )
+
 [connection signal="pressed" from="VBoxContainer/Button_Resume" to="." method="_on_Button_Resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button_Settings" to="." method="_on_Button_Settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button_Menu" to="." method="_on_Button_Menu_pressed"]
