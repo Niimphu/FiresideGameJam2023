@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Stem.PNG-2cb18dee29aece998cc7d4f20eeb9e6c.stex"
+path="res://.import/Leafy.PNG-8ce4157b02810edf65268c1be6f59e8a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Level/Flower/Sprites/Stem.PNG"
-dest_files=[ "res://.import/Stem.PNG-2cb18dee29aece998cc7d4f20eeb9e6c.stex" ]
+source_file="res://Level/Flower/Sprites/Leafy.PNG"
+dest_files=[ "res://.import/Leafy.PNG-8ce4157b02810edf65268c1be6f59e8a.stex" ]
 
 [params]
 

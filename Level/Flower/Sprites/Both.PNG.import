@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/StemThorny.PNG-40b05c8b32cad952b671b2972702af5a.stex"
+path="res://.import/Both.PNG-0ca371ff928cdc7356080cbbeaddf620.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Level/Flower/Sprites/StemThorny.PNG"
-dest_files=[ "res://.import/StemThorny.PNG-40b05c8b32cad952b671b2972702af5a.stex" ]
+source_file="res://Level/Flower/Sprites/Both.PNG"
+dest_files=[ "res://.import/Both.PNG-0ca371ff928cdc7356080cbbeaddf620.stex" ]
 
 [params]
 
