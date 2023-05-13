@@ -6,7 +6,7 @@ onready var petals = $Petals
 
 enum evenness { ODD, EVEN }
 enum pollening { NO, YES }
-enum colour { RED, BLUE, ORANGE, WHITE , MAGENTA }
+enum colour { WHITE, RED, MAGENTA, ROYAL_BLUE }
 enum roundness { ROUND, POINTY }
 enum amount { FEW, MANY }
 
