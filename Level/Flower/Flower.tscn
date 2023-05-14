@@ -128,6 +128,7 @@ frames = SubResource( 1 )
 material = SubResource( 9 )
 position = Vector2( 640, 360 )
 frames = SubResource( 2 )
+frame = 1
 
 [node name="Centre" type="Sprite" parent="Identifiers"]
 position = Vector2( 641, 361 )
