@@ -1,6 +1,10 @@
 extends Node
 
 onready var level_change_delay = $LevelChangeDelay
+onready var game_timer: Timer = $GameTimer
+onready var game_timer_display: RichTextLabel = $HUD/GameTimerDisplay
+
+signal level_change
 
 var sprites
 var current_level
@@ -13,6 +17,12 @@ var scenes = [preload("res://Level/Flower/Flower.tscn")]
 
 func _ready():
 	new_level()
+	emit_signal("level_change")
+	game_timer_display.set_time(game_timer.wait_time)
+
+func _process(_delta):
+	if not game_timer.is_stopped():
+		game_timer_display.set_time(game_timer.time_left)
 
 func new_level():
 	randomize()

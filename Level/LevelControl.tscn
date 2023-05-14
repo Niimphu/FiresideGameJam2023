@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Animation scripts/spin_sprite.gd" type="Script" id=1]
 [ext_resource path="res://Level/LevelControl.gd" type="Script" id=2]
@@ -18,6 +18,10 @@
 [ext_resource path="res://Level/Sprites/NewHealth3.PNG" type="Texture" id=16]
 [ext_resource path="res://Level/Sprites/NewHealth4.PNG" type="Texture" id=17]
 [ext_resource path="res://Level/Sprites/NewHealth5.PNG" type="Texture" id=18]
+[ext_resource path="res://Fonts/dealerplate california.otf" type="DynamicFontData" id=19]
+[ext_resource path="res://Level/GameTimerDisplay.gd" type="Script" id=20]
+[ext_resource path="res://Level/GameTimer.gd" type="Script" id=21]
+[ext_resource path="res://Level/GameTimerDelayStart.gd" type="Script" id=22]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -98,6 +102,12 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 
+[sub_resource type="DynamicFont" id=7]
+size = 96
+use_filter = true
+extra_spacing_char = 5
+font_data = ExtResource( 19 )
+
 [node name="LevelControl" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -144,8 +154,18 @@ rotate_modifier = -2.5
 
 [node name="ButtonControl" parent="HUD" instance=ExtResource( 12 )]
 
-[node name="LevelChangeDelay" type="Timer" parent="."]
-one_shot = true
+[node name="GameTimerDisplay" type="RichTextLabel" parent="HUD"]
+margin_left = 1012.0
+margin_top = 39.0
+margin_right = 1273.0
+margin_bottom = 149.0
+custom_fonts/normal_font = SubResource( 7 )
+bbcode_enabled = true
+bbcode_text = "[center]0:00[/center]"
+text = "0:00"
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+script = ExtResource( 20 )
 
 [node name="Fader" parent="." instance=ExtResource( 13 )]
 visible = false
@@ -154,7 +174,26 @@ __meta__ = {
 }
 
 [node name="PauseMenu" parent="." instance=ExtResource( 11 )]
+visible = false
 
+[node name="LevelChangeDelay" type="Timer" parent="."]
+one_shot = true
+
+[node name="GameTimerDelayStart" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+script = ExtResource( 22 )
+
+[node name="GameTimer" type="Timer" parent="."]
+one_shot = true
+script = ExtResource( 21 )
+__meta__ = {
+"_editor_description_": "The timer that keeps track of the time limit in the game. If it reaches zero, the player loses."
+}
+
+[connection signal="level_change" from="." to="GameTimer" method="_on_LevelControl_level_change"]
+[connection signal="level_change" from="." to="GameTimerDelayStart" method="_on_LevelControl_level_change"]
 [connection signal="danger" from="HUD/ButtonControl" to="." method="_on_ButtonControl_danger"]
 [connection signal="safe" from="HUD/ButtonControl" to="." method="_on_ButtonControl_safe"]
 [connection signal="timeout" from="LevelChangeDelay" to="." method="_on_LevelChangeDelay_timeout"]
+[connection signal="timeout" from="GameTimerDelayStart" to="GameTimer" method="_on_GameTimerDelayStart_timeout"]
