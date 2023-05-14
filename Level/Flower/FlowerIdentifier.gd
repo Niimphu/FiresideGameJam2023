@@ -53,6 +53,21 @@ func check_danger() -> bool:
 #			return false
 #		else:
 #			return true
+	if petal_colour == colour.WHITE:
+		if petal_amount == amount.MANY:
+			if pollen == pollening.YES:
+				if stem_thorny == thorny.YES:
+					if stamen_evenness == evenness.EVEN:
+						return false
+					else: return true
+				else: return false
+			elif stem_leafy == leafy.YES:
+				if petal_roundness == roundness.POINTY:
+					return true
+		elif stem_leafy == leafy.YES:
+			if petal_roundness == roundness.POINTY:
+				return true
+	
 	return true
 
 func initialise_features():
