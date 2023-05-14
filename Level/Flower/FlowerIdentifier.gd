@@ -30,20 +30,155 @@ func check_danger() -> bool:
 	var pointy_petals: bool = (petal_roundness == roundness.POINTY)
 	var many_petals: bool = (petal_amount == amount.MANY)
 	var is_thorny: bool = (stem_thorny == thorny.YES)
-	var is_leafy: bool = (stem_leafy == leafy.YES)
+	var leafy_stem: bool = (stem_leafy == leafy.YES)
 
 	match petal_colour:
 		colour.WHITE:
 			pass
 		colour.RED:
-			pass
+			check_danger_red_flower(many_petals, pollen_present, pointy_petals, leafy_stem, even_stamen)
 		colour.PURPOLLL:
-			pass
+			check_danger_purpoll_flower(is_thorny, many_petals, pollen_present, pointy_petals, leafy_stem, even_stamen)
 		colour.BLUE:
-			pass
+			check_danger_blue_flower(is_thorny, many_petals, pollen_present, pointy_petals, leafy_stem, even_stamen)
 	
 	return true
 	
+func check_danger_blue_flower(is_thorny: bool, many_petals: bool, pollen_present: bool, pointy_petals: bool, leafy_stem: bool, even_stamen: bool):
+	if is_thorny and many_petals and pollen_present and pointy_petals:
+		return false
+	elif is_thorny and many_petals and pollen_present and not pointy_petals:
+		return true
+	elif is_thorny and many_petals and not pollen_present and leafy_stem and pointy_petals:
+		return false
+	elif is_thorny and many_petals and not pollen_present and leafy_stem and not pointy_petals:
+		return true
+	elif is_thorny and many_petals and not pollen_present and not leafy_stem and pointy_petals:
+		return true
+	elif is_thorny and many_petals and not pollen_present and not leafy_stem and not pointy_petals:
+		return true
+	elif is_thorny and not many_petals and pointy_petals:
+		return true
+	elif is_thorny and not many_petals and not pointy_petals:
+		return false
+	elif not is_thorny and even_stamen and many_petals and pollen_present and pointy_petals:
+		return false
+	elif not is_thorny and even_stamen and many_petals and pollen_present and not pointy_petals:
+		return true
+	elif not is_thorny and even_stamen and many_petals and not pollen_present and leafy_stem and pointy_petals:
+		return false
+	elif not is_thorny and even_stamen and many_petals and not pollen_present and leafy_stem and not pointy_petals:
+		return true
+	elif not is_thorny and even_stamen and many_petals and not pollen_present and not leafy_stem and pointy_petals:
+		return true
+	elif not is_thorny and even_stamen and many_petals and not pollen_present and not leafy_stem and not pointy_petals:
+		return true
+	elif not is_thorny and even_stamen and not many_petals and pointy_petals:
+		return true
+	elif not is_thorny and even_stamen and not many_petals and not pointy_petals:
+		return false
+	elif not is_thorny and not even_stamen and pollen_present and pointy_petals:
+		return false
+	elif not is_thorny and not even_stamen and pollen_present and not pointy_petals:
+		return true
+	elif not is_thorny and not even_stamen and not pollen_present and leafy_stem and pointy_petals:
+		return false
+	elif not is_thorny and not even_stamen and not pollen_present and leafy_stem and not pointy_petals:
+		return true
+	elif not is_thorny and not even_stamen and not pollen_present and not leafy_stem and pointy_petals:
+		return true
+	elif not is_thorny and not even_stamen and not pollen_present and not leafy_stem and not pointy_petals:
+		return true
+
+func check_danger_red_flower(many_petals: bool, pollen_present: bool, pointy_petals: bool, leafy_stem: bool, even_stamen: bool):
+	if even_stamen and many_petals and pollen_present and pointy_petals:
+		return false
+	elif even_stamen and many_petals and pollen_present and not pointy_petals:
+		return true
+	elif even_stamen and many_petals and not pollen_present and leafy_stem and pointy_petals:
+		return false
+	elif even_stamen and many_petals and not pollen_present and leafy_stem and not pointy_petals:
+		return true
+	elif even_stamen and many_petals and not pollen_present and not leafy_stem and pointy_petals:
+		return true
+	elif even_stamen and many_petals and not pollen_present and not leafy_stem and not pointy_petals:
+		return true
+	elif even_stamen and not many_petals and pointy_petals:
+		return true
+	elif even_stamen and not many_petals and not pointy_petals:
+		return false
+	elif not even_stamen and pollen_present and pointy_petals:
+		return false
+	elif not even_stamen and pollen_present and not pointy_petals:
+		return true
+	elif not even_stamen and not pollen_present and leafy_stem and pointy_petals:
+		return false
+	elif not even_stamen and not pollen_present and leafy_stem and not pointy_petals:
+		return true
+	elif not even_stamen and not pollen_present and not leafy_stem and pointy_petals:
+		return true
+	elif not even_stamen and not pollen_present and not leafy_stem and not pointy_petals:
+		return true
+
+func check_danger_purpoll_flower(is_thorny: bool, many_petals: bool, pollen_present: bool, pointy_petals: bool, leafy_stem: bool, even_stamen: bool):
+	if many_petals and leafy_stem and pointy_petals:
+		return true
+	elif many_petals and leafy_stem and not pointy_petals and is_thorny and even_stamen:
+		return false
+	elif many_petals and leafy_stem and not pointy_petals and is_thorny and not even_stamen:
+		return true
+	elif many_petals and leafy_stem and not pointy_petals and not is_thorny:
+		return false
+	elif many_petals and not leafy_stem and not is_thorny:
+		return false
+	elif many_petals and not leafy_stem and is_thorny and even_stamen:
+		return false
+	elif many_petals and not leafy_stem and is_thorny and not even_stamen:
+		return true
+	elif not many_petals and pollen_present and is_thorny and even_stamen:
+		return false
+	elif not many_petals and pollen_present and is_thorny and not even_stamen:
+		return true
+	elif not many_petals and pollen_present and not is_thorny:
+		return false
+	elif not many_petals and not pollen_present and leafy_stem:
+		return true
+	elif not many_petals and not pollen_present and not leafy_stem and pointy_petals:
+		return true
+	elif not many_petals and not pollen_present and not leafy_stem and not pointy_petals and not is_thorny:
+		return false
+	elif not many_petals and not pollen_present and not leafy_stem and not pointy_petals and is_thorny and even_stamen:
+		return false
+	elif not many_petals and not pollen_present and not leafy_stem and not pointy_petals and is_thorny and not even_stamen:
+		return true
+
+func check_danger_white_flower(is_thorny: bool, many_petals: bool, pollen_present: bool, pointy_petals: bool, leafy_stem: bool, even_stamen: bool):
+	if many_petals and pollen_present and is_thorny and even_stamen:
+		return false
+	elif many_petals and pollen_present and is_thorny and not even_stamen:
+		return true
+	elif many_petals and pollen_present and not is_thorny:
+		return false
+	elif many_petals and not pollen_present and leafy_stem:
+		return true
+	elif many_petals and not pollen_present and not leafy_stem and pointy_petals:
+		return true
+	elif many_petals and not pollen_present and not leafy_stem and not pointy_petals and not is_thorny:
+		return false
+	elif many_petals and not pollen_present and not leafy_stem and not pointy_petals and is_thorny and even_stamen:
+		return false
+	elif many_petals and not pollen_present and not leafy_stem and not pointy_petals and is_thorny and not even_stamen:
+		return true
+	elif not many_petals and leafy_stem:
+		return true
+	elif not many_petals and not leafy_stem and pointy_petals:
+		return true
+	elif not many_petals and not leafy_stem and not pointy_petals and not is_thorny:
+		return false
+	elif not many_petals and not leafy_stem and not pointy_petals and is_thorny and even_stamen:
+		return false
+	elif not many_petals and not leafy_stem and not pointy_petals and is_thorny and not even_stamen:
+		return true
 
 func initialise_features():
 	petals.material.set_shader_param("colour_index", randi() % 4)
