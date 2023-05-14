@@ -27,48 +27,25 @@ func _ready():
 	initialise_features()
 
 func check_danger() -> bool:
-#	if petal_colour == colour.ORANGE:
-#		if petal_amount == amount.FEW:
-#			return true
-#		elif stamen_evenness ==evenness.ODD:
-#			return false
-#		elif location ==environment.TREE:
-#			return false
-#		else:
-#			return true
-#	elif petal_colour == colour.BLUE:
-#		if stamen_evenness ==evenness.EVEN:
-#			return true
-#		else:
-#			return false
-#	elif petal_colour == colour.WHITE:
-#		if location == environment.TREE and petal_amount == amount.MANY:
-#			return true
-#		else:
-#			return false
-#	else: #petals are red
-#		if petal_amount ==amount.FEW:
-#			return false
-#		elif stamen_evenness ==evenness.EVEN and location == environment.GRASS:
-#			return false
-#		else:
-#			return true
-	if petal_colour == colour.WHITE:
-		if petal_amount == amount.MANY:
-			if pollen == pollening.YES:
-				if stem_thorny == thorny.YES:
-					if stamen_evenness == evenness.EVEN:
-						return false
-					else: return true
-				else: return false
-			elif stem_leafy == leafy.YES:
-				if petal_roundness == roundness.POINTY:
-					return true
-		elif stem_leafy == leafy.YES:
-			if petal_roundness == roundness.POINTY:
-				return true
+	var even_stamen: bool = (stamen_evenness == evenness.EVEN)
+	var pollen_present: bool = (has_pollen == pollening.YES)
+	var pointy_petals: bool = (petal_roundness == roundness.POINTY)
+	var many_petals: bool = (petal_amount == amount.MANY)
+	var is_thorny: bool = (stem_thorny == thorny.YES)
+	var is_leafy: bool = (stem_leafy == leafy.YES)
+
+	match petal_colour:
+		colour.WHITE:
+			pass
+		colour.RED:
+			pass
+		colour.PURPOLLL:
+			pass
+		colour.BLUE:
+			pass
 	
 	return true
+	
 
 func initialise_features():
 	stamen_evenness = evenness.ODD if stamen.frame % 2  else evenness.EVEN
