@@ -34,7 +34,7 @@ func check_danger() -> bool:
 
 	match petal_colour:
 		colour.WHITE:
-			pass
+			check_danger_white_flower(is_thorny, many_petals, pollen_present, pointy_petals, leafy_stem, even_stamen)
 		colour.RED:
 			check_danger_red_flower(many_petals, pollen_present, pointy_petals, leafy_stem, even_stamen)
 		colour.PURPOLLL:
