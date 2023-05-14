@@ -15,3 +15,5 @@ export(float, 0.5, 5, 0.5) var hard_mode_minutes: float = 1.0
 export(int, 1, 5) var hard_mode_lives: int = 3
 
 var current_difficulty: int = DIFFICULTY.NORMAL
+
+var current_lives: int = 0
