@@ -22,9 +22,7 @@ var stem_thorny
 var stem_leafy
 
 func _ready():
-	randomize()
-	petals.material.set_shader_param("colour_index", randi() % 4)
-	initialise_features()
+	pass
 
 func check_danger() -> bool:
 	var even_stamen: bool = (stamen_evenness == evenness.EVEN)
@@ -48,6 +46,8 @@ func check_danger() -> bool:
 	
 
 func initialise_features():
+	petals.material.set_shader_param("colour_index", randi() % 4)
+	
 	stamen_evenness = evenness.ODD if stamen.frame % 2  else evenness.EVEN
 	
 	has_pollen = pollening.NO if pollen.frame == 0 else pollening.YES
@@ -65,7 +65,7 @@ func initialise_features():
 	else:
 		pollen.get_node("Particles2D").visible = true
 	
-	match petal_colour:
+	match petals.material.get_shader_param("colour_index"):
 		0:
 			petal_colour = colour.WHITE
 		1:
