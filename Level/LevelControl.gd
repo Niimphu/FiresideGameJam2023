@@ -15,7 +15,7 @@ var next_level
 var identifiers
 
 var is_dangerous: bool
-var scenes = [preload("res://Level/Flower/Flower.tscn")]
+var scenes = [preload("res://Level/Flower/Flower.tscn"), preload("res://Level/Frog/Frog.tscn")]
 
 func _ready():
 	new_level()
