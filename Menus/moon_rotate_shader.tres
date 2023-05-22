@@ -1,0 +1,23 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float movement_speed_multiplier = .05;
+uniform vec2 center = vec2(250, 210);
+
+void vertex()
+{
+	vec2 position = VERTEX.xy;
+	float time = TIME * movement_speed_multiplier;
+	float angle = time * 2.0 * 3.14159;
+
+	position -= center;
+	position = vec2(
+		position.x * cos(angle) - position.y * sin(angle),
+		position.x * sin(angle) + position.y * cos(angle)
+	);
+	position += center;
+	
+	VERTEX.xy = position;
+}"
