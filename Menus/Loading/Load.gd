@@ -23,7 +23,8 @@ func change_scene(current_scene, new_scene):
 		print("loader failge")
 		return
 	
-	current_scene.queue_free()
+	if is_instance_valid(current_scene):
+		current_scene.queue_free()
 	
 	yield(get_tree().create_timer(2), "timeout") #delay
 	
@@ -41,7 +42,8 @@ func change_scene(current_scene, new_scene):
 			yield(get_tree().create_timer(3), "timeout") #delay
 			
 			var scene = loader.get_resource().instance()
-			get_tree().get_root().call_deferred("add_child", scene)
+			get_tree().get_root().add_child(scene)
+			get_tree().current_scene = scene # You have to set this variable manually for this to work.
 			load_scene_instance.queue_free()
 			return
 		

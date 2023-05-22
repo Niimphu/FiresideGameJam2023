@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Ribbit.mp3-95311cdfc1bd8b5e847156bcfd1780be.mp3str"
+
+[deps]
+
+source_file="res://Level/Frog/Ribbit.mp3"
+dest_files=[ "res://.import/Ribbit.mp3-95311cdfc1bd8b5e847156bcfd1780be.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

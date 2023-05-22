@@ -1,0 +1,20 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+void vertex(){
+	VERTEX.x += sin(TIME * 0.8) * 40.0 * (UV.y - 1.0);
+}
+
+uniform vec4 green : hint_color = vec4(0.4, 0.75, 0.4, 1.0);
+
+void fragment()
+{
+	COLOR = texture(TEXTURE, UV);
+	
+	if(COLOR.a != 0.0)
+	{
+		COLOR = vec4(green.rgb, COLOR.a);
+	}
+}"

@@ -3,9 +3,9 @@
 [ext_resource path="res://Menus/Fader.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Menus/Loading/Sprites/NewLoading.PNG" type="Texture" id=2]
 [ext_resource path="res://Menus/Loading/Sprites/Ship.PNG" type="Texture" id=3]
+[ext_resource path="res://Menus/Loading/Sprites/BetterClouds.png" type="Texture" id=4]
 [ext_resource path="res://Menus/Loading/ScrollZoom.gd" type="Script" id=5]
 [ext_resource path="res://Animation scripts/spin_control.gd" type="Script" id=6]
-[ext_resource path="res://Menus/Loading/Sprites/CloudZoom.PNG" type="Texture" id=7]
 [ext_resource path="res://Menus/Loading/Sprites/Logo.PNG" type="Texture" id=8]
 
 [sub_resource type="Shader" id=1]
@@ -47,7 +47,7 @@ color = Color( 0.466667, 0.607843, 0.8, 1 )
 [node name="Clouds" type="TextureRect" parent="ParallaxBackground/CloudScroll"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 7 )
+texture = ExtResource( 4 )
 
 [node name="Ship" type="TextureRect" parent="."]
 material = SubResource( 2 )
