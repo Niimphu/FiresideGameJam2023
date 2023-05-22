@@ -21,7 +21,7 @@ func _ready():
 	set_frog_colour()
 
 func set_frog_colour():
-	pass
+	body.modulate = Color(randf() / 3 + 0.5, randf() / 3 + 0.5, randf() / 3 + 0.5, 1.0)
 
 func check_danger() -> bool:
 
@@ -50,6 +50,6 @@ func initialise_features():
 		1:
 			temperature = temp.RED
 		2:
-			temperature = temp.PURPOLLL
+			temperature = temp.YELLOW
 		3:
 			temperature = temp.BLUE

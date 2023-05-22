@@ -13,6 +13,7 @@ var current_level
 var current_level_instance
 var next_level
 var identifiers
+var level_index
 
 var is_dangerous: bool
 var scenes = [preload("res://Level/Flower/Flower.tscn"), preload("res://Level/Frog/Frog.tscn")]
@@ -30,8 +31,12 @@ func _process(_delta):
 	lives_indicator.set_frame(5 - GameInfo.current_lives)
 
 func new_level():
+	var new_level_index: int
 	randomize()
-	current_level = scenes[randi() % scenes.size()]
+	while (new_level_index == level_index):
+		new_level_index = randi() % scenes.size()
+	level_index = new_level_index
+	current_level = scenes[level_index]
 	current_level_instance = (current_level.instance())
 	$Level.add_child(current_level_instance)
 	identifiers = current_level_instance.get_node("Identifiers")

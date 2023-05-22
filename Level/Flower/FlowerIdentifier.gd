@@ -34,15 +34,15 @@ func check_danger() -> bool:
 
 	match petal_colour:
 		colour.WHITE:
-			check_danger_white_flower(is_thorny, many_petals, pollen_present, pointy_petals, leafy_stem, even_stamen)
+			return(check_danger_white_flower(is_thorny, many_petals, pollen_present, pointy_petals, leafy_stem, even_stamen))
 		colour.RED:
-			check_danger_red_flower(many_petals, pollen_present, pointy_petals, leafy_stem, even_stamen)
+			return(check_danger_red_flower(many_petals, pollen_present, pointy_petals, leafy_stem, even_stamen))
 		colour.PURPOLLL:
-			check_danger_purpoll_flower(is_thorny, many_petals, pollen_present, pointy_petals, leafy_stem, even_stamen)
+			return(check_danger_purpoll_flower(is_thorny, many_petals, pollen_present, pointy_petals, leafy_stem, even_stamen))
 		colour.BLUE:
-			check_danger_blue_flower(is_thorny, many_petals, pollen_present, pointy_petals, leafy_stem, even_stamen)
+			return(check_danger_blue_flower(is_thorny, many_petals, pollen_present, pointy_petals, leafy_stem, even_stamen))
 	
-	return true
+	return false
 	
 func check_danger_blue_flower(is_thorny: bool, many_petals: bool, pollen_present: bool, pointy_petals: bool, leafy_stem: bool, even_stamen: bool):
 	if is_thorny and many_petals and pollen_present and pointy_petals:
